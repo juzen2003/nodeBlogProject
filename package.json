@@ -1,0 +1,33 @@
+{
+  "name": "blog-party-usa",
+  "version": "1.0.0",
+  "description": "This project will provide an introduction to Express and server-side rendering using the JS templating engine Pug. We'll use [Node], [Express], and [MongoDB] to build an application that allows users to view and create blog posts.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pklong/blog-party-usa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pklong/blog-party-usa/issues"
+  },
+  "homepage": "https://github.com/Pklong/blog-party-usa#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.3",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.12.1",
+    "pug": "^2.0.0-rc.4",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.0",
+    "nodemon": "^1.18.3"
+  }
+}

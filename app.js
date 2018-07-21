@@ -27,6 +27,46 @@ app.use(morgan('combined'));
 // SERVING STATIC FILES
 app.use(express.static(path.join(__dirname, 'styles')));
 
+
+// MIDDLEWARE EXAMPLE
+const colors = [
+  'red',
+  'blue',
+  'green',
+  'yellow',
+  'purple',
+  'orange',
+  'pink',
+  'teal'
+];
+const sampleColor = () => {
+  const randomIdx = Math.floor(Math.random() * colors.length);
+  return colors[randomIdx];
+};
+const addColorToReq = (req, res, next) => {
+  // check if this is the first time middleware is invoked
+  if (req.colors instanceof Array) {
+    // previous middleware has set a 'colors' property
+    // Note: It's the same request object!
+    req.colors.push(sampleColor());
+  } else {
+    req.colors = [sampleColor()];
+  }
+  // invoking next ensures our following middleware will be run
+  next();
+};
+
+// we could also pass an array containing all middlewares as our second argument. Try it!
+app.get(
+  '/three-colors',
+  addColorToReq,
+  addColorToReq,
+  addColorToReq,
+  (req, res) => {
+    res.end(req.colors.join(', '));
+  }
+);
+
 // app.get('/', (req, res) => {
 //   res.render("index");
 // });

@@ -1,3 +1,5 @@
+// LOAD OUR APP CONFIGURATION
+require('dotenv').config({ path: './variables.env' });
 // FRAMEWORK FOR BUILDING WEB APPS WITH NODE
 const express = require('express');
 // LOGGING
@@ -12,6 +14,11 @@ const uuid = require('uuid/v1');
 const bodyParser = require('body-parser');
 // HTML FORMS PUT & DELETE
 const methodOverride = require('method-override');
+// MONGODB ORM
+const mongoose = require('mongoose');
+// CONNECT TO HOSTED DATABASE
+// mongodb+srv://test123:<PASSWORD>@blogtest-rorkw.mongodb.net/test?retryWrites=true
+mongoose.connect(`${process.env.DATABASE}`, { useMongoClient: true });
 // MAKE THE APP
 const app = express();
 
